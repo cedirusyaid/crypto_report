@@ -15,7 +15,7 @@ Shell script untuk mengambil harga crypto utama (BTC, ETH, BNB, SOL, dll), perse
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/username/crypto-report.git
+git clone git@github.com:cedirusyaid/crypto_report.git
 cd crypto-report
 ```
 
