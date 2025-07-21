@@ -17,8 +17,11 @@ IFS=',' read -ra SYMBOLS_ARR <<< "$SYMBOLS"
 # Get market data
 MARKET_DATA=$(curl -s "$API_URL/coins/markets?vs_currency=usd&ids=$COINS&price_change_percentage=24h,7d")
 
-# Start message
-MESSAGE="📊 <b>Crypto Market Update</b>"$'\n'
+# Ambil waktu lokal
+NOW=$(date '+%d %B %Y - %H:%M')
+
+# Inisialisasi pesan dengan waktu
+MESSAGE="📊 <b>Crypto Market Update</b> (${NOW})"
 
 # Loop over each coin
 for i in "${!COIN_IDS[@]}"; do
@@ -35,9 +38,9 @@ for i in "${!COIN_IDS[@]}"; do
   [[ $(echo "$CHANGE_7D < 0" | bc -l) -eq 1 ]] && EMOJI_7D="📉"
 
   # Tambahkan ke pesan
-  MESSAGE+=$'\n'"<b>${SYMBOL}</b> ${NAME}"
+  MESSAGE+=$'\n'"<b>${SYMBOL}</b> #${NAME}"
   MESSAGE+="::: 💰 \$$(printf '%.2f' "$PRICE")"
-  MESSAGE+=$'\n'"$EMOJI_24H 24H: $(printf '%.2f' "$CHANGE_24H")%  |  $EMOJI_7D 7D: $(printf '%.2f' "$CHANGE_7D")%"$'\n'
+  MESSAGE+=$'\n       '"$EMOJI_24H 24H: $(printf '%.2f' "$CHANGE_24H")%  |  $EMOJI_7D 7D: $(printf '%.2f' "$CHANGE_7D")%"
 done
 
 # Tambahkan BTCD
