@@ -1,0 +1,20 @@
+# File konfigurasi
+.env
+
+# Cache editor
+*.swp
+*.swo
+
+# File sistem
+.DS_Store
+Thumbs.db
+
+# Output logs
+*.log
+
+# Python cache (kalau ada script pendukung python)
+__pycache__/
+*.pyc
+
+# Backup file
+*~
